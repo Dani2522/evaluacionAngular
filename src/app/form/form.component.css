@@ -1,0 +1,77 @@
+/* add-movie.component.css */
+
+/* Estilos para el formulario */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  /* Estilos para la tarjeta de película */
+  .example-card {
+    width: 400px;
+    background-color: #1c1c1c; /* Color de fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra */
+  }
+  
+  /* Estilos para el título */
+  .mat-card-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para el subtítulo */
+  .mat-card-subtitle {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para el contenido */
+  .card-content {
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para la imagen previa */
+  img {
+    max-width: 100%;
+    border-radius: 10px 10px 0 0; /* Esquinas redondeadas solo en la parte superior */
+  }
+  
+  /* Estilos para el botón de agregar película */
+  .mat-card-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  /* Estilos para el botón */
+  button {
+    background-color: #ff0000; /* Rojo */
+    color: #ffffff; /* Texto blanco */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #cc0000; /* Rojo más oscuro al pasar el mouse */
+  }
+  
+  /* Estilos para el campo de entrada de archivos */
+  input[type="file"] {
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para el formulario de película */
+  .form-field {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  

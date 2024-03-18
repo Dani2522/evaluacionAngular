@@ -1,0 +1,44 @@
+<div *ngIf="peliculas && peliculas.length > 0" class="peliculas-container">
+  <!-- pipe personalizada  -->
+  <div *ngFor="let pelicula of peliculas | ordenarPorTitulo" class="pelicula-card">
+    <mat-card class="example-card">
+      <p>{{ pelicula.title | uppercase }}</p>
+
+      <mat-card-header>
+        <mat-card-title>{{ pelicula.title }}</mat-card-title>
+        <mat-card-subtitle>{{ pelicula.director }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="pelicula.image" alt="Photo of {{ pelicula.title }}">
+      <mat-card-content class="card-content">
+        <p>{{ pelicula.description }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="eliminarPelicula(pelicula.id)">ELIMINAR</button>
+        <button mat-button (click)="editarPelicula(pelicula)">ACTUALIZAR</button>
+      </mat-card-actions>
+      <div *ngIf="pelicula.editando">
+        <!-- Formulario para editar los detalles de la película -->
+        <form (submit)="guardarCambios(pelicula)">
+          <mat-form-field>
+            <input matInput [(ngModel)]="pelicula.title" placeholder="Título">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [(ngModel)]="pelicula.director" placeholder="Director">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [(ngModel)]="pelicula.image" placeholder="URL de la imagen">
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput [(ngModel)]="pelicula.description" placeholder="Descripción"></textarea>
+          </mat-form-field>
+          <button mat-raised-button type="submit">Guardar cambios</button>
+        </form>
+      </div>
+    </mat-card>
+  </div>
+</div>
+<div *ngIf="!(peliculas && peliculas.length > 0)">
+  <p>No hay películas disponibles.</p>
+</div>
+
+  

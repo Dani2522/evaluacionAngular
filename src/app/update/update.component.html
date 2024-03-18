@@ -1,0 +1,51 @@
+    <div class="form-container">
+        <div *ngIf="nuevaPelicula">
+        <mat-card class="example-card">
+            <mat-card-header>
+            <mat-card-title>{{ nuevaPelicula.title }}</mat-card-title>
+            <mat-card-subtitle>Director: {{ nuevaPelicula.director }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="card-content">
+            <p>{{ nuevaPelicula.description }}</p>
+            </mat-card-content>
+            <img [src]="previewImage" *ngIf="previewImage" alt="Preview">
+        </mat-card>
+        </div>
+    
+        <form (ngSubmit)="actualizarPelicula()" #form="ngForm">
+        <mat-card class="example-card">
+            <mat-card-header>
+            <mat-card-title>Actualizar Película</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+            <!-- Muestra el ID de la película si está presente -->
+            <mat-form-field class="form-field" *ngIf="nuevaPelicula.id">
+                <input matInput placeholder="ID de Película" name="id" type="number" [(ngModel)]="nuevaPelicula.id">
+            </mat-form-field>
+    
+            <!-- Si el ID no está presente, permite al usuario ingresar uno manualmente -->
+            <mat-form-field class="form-field" *ngIf="!nuevaPelicula.id">
+                <input matInput placeholder="ID de Película" name="id" type="number" [(ngModel)]="nuevaPelicula.id" required>
+            </mat-form-field>
+    
+            <mat-form-field class="form-field">
+                <input matInput placeholder="Título" name="title" required [(ngModel)]="nuevaPelicula.title">
+            </mat-form-field>
+            <mat-form-field class="form-field">
+                <input matInput placeholder="Director" name="director" required [(ngModel)]="nuevaPelicula.director">
+            </mat-form-field>
+            <input type="file" (change)="onImageSelected($event)" accept="image/*">
+            <div *ngIf="previewImage">
+                <img [src]="previewImage" alt="Preview">
+            </div>
+            <mat-form-field class="form-field">
+                <textarea matInput placeholder="Descripción" name="description" [(ngModel)]="nuevaPelicula.description"></textarea>
+            </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions>
+            <button mat-button type="submit" [disabled]="form.invalid">Actualizar Película</button>
+            </mat-card-actions>
+        </mat-card>
+        </form>
+    </div>
+    

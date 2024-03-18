@@ -1,0 +1,57 @@
+<!-- add-movie.component.html -->
+
+<div class="form-container">
+    <form (ngSubmit)="agregarPelicula()" #form="ngForm">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Nueva Película</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-form-field class="form-field">
+            <input matInput placeholder="Título" name="title" required [(ngModel)]="nuevaPelicula.title">
+          </mat-form-field>
+          <mat-form-field class="form-field">
+            <input matInput placeholder="Director" name="director" required [(ngModel)]="nuevaPelicula.director">
+          </mat-form-field>
+          <!-- Cambio para permitir la carga de imágenes -->
+
+        <!-- Cambio: Utiliza el elemento de entrada de archivos fuera de mat-form-field -->
+        <input type="file" (change)="onImageSelected($event)" accept="image/*">
+        <!-- Visualización previa de la imagen seleccionada -->
+        <div *ngIf="previewImage">
+          <img [src]="previewImage" alt="Preview">
+        </div>
+          <div *ngIf="previewImage">
+            <img [src]="previewImage" alt="Preview">
+          </div>
+        
+          <mat-form-field class="form-field">
+            <textarea matInput placeholder="Descripción" name="description" [(ngModel)]="nuevaPelicula.description"></textarea>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button type="submit" [disabled]="form.invalid">Agregar Película</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+    <div class="form-container">
+        <!-- Formulario para agregar una nueva película -->
+      
+  
+<!-- Tarjeta de la nueva película -->
+<div class="movie-card" *ngIf="nuevaPelicula">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{ nuevaPelicula.title }}</mat-card-title>
+        <!-- Agregar el director debajo del título -->
+        <mat-card-subtitle>Director: {{ nuevaPelicula.director }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="card-content">
+        <p>{{ nuevaPelicula.description }}</p>
+      </mat-card-content>
+      <!-- Visualización previa de la imagen -->
+      <img [src]="previewImage" *ngIf="previewImage" alt="Preview">
+    </mat-card>
+  </div>
+  <!-- form.component.html -->
+</div>
